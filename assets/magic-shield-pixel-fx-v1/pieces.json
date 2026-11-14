@@ -1,0 +1,72 @@
+[
+  {
+    "piece": "fx-shield",
+    "about": "a glassy blue shield bubble: it grows in, shimmers, flashes when hit and pops",
+    "animations": [
+      {
+        "name": "up",
+        "frames": 9,
+        "loop": false,
+        "cell": [
+          64,
+          64
+        ],
+        "ms": 519,
+        "about": "the bubble grows out of a spark, overshoots, settles and materialises into the idle bubble: its last frame is idle's first (plays once; then play idle)"
+      },
+      {
+        "name": "idle",
+        "frames": 16,
+        "loop": true,
+        "cell": [
+          64,
+          64
+        ],
+        "ms": 1280,
+        "about": "the bubble shimmers: its rim churns, glints twinkle inside and motes drift round it (seamless loop)"
+      },
+      {
+        "name": "hit",
+        "frames": 7,
+        "loop": false,
+        "cell": [
+          64,
+          64
+        ],
+        "ms": 382,
+        "about": "an overlay: play it once on a second sprite over the looping idle, at the same centre. A blow lands on the upper right: the rim there flares, a shock ring pulses round the bubble and a few sparks fly (plays once, ends empty)"
+      },
+      {
+        "name": "pop",
+        "frames": 10,
+        "loop": false,
+        "cell": [
+          64,
+          64
+        ],
+        "ms": 575,
+        "about": "the bubble flashes, cracks and bursts into motes (plays once, ends empty)"
+      }
+    ],
+    "no_halo": true,
+    "recipes": [
+      "recipe/fx-shield-bubble.fx.json",
+      "recipe/fx-shield.fx.json"
+    ],
+    "pixelbolt": "0.13.0",
+    "previews": [
+      "previews/fx-shield-up-4x.gif",
+      "previews/fx-shield-idle-4x.gif",
+      "previews/fx-shield-hit-4x.gif",
+      "previews/fx-shield-pop-4x.gif"
+    ],
+    "sounds": [
+      "sounds/fx-shield-up.wav"
+    ],
+    "sound_for": {
+      "sounds/fx-shield-up.wav": [
+        "up"
+      ]
+    }
+  }
+]

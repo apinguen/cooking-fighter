@@ -1,0 +1,585 @@
+{
+  "format": "pixelforge-fx",
+  "version": 1,
+  "name": "fx-shield",
+  "width": 64,
+  "height": 64,
+  "anchor": [
+    32,
+    32
+  ],
+  "palette": {
+    "d": "#122a4d",
+    "n": "#1f4f8f",
+    "b": "#2f86e0",
+    "c": "#6fd6ff",
+    "W": "#f0fcff"
+  },
+  "symbols": {
+    "mote": [
+      "c"
+    ],
+    "mote-hot": [
+      "W"
+    ],
+    "glint": [
+      "Wc",
+      "cW"
+    ],
+    "fleck": [
+      "cW"
+    ],
+    "fleck-d": [
+      "c.",
+      ".W"
+    ],
+    "bubble": {
+      "recipe": "fx-shield-bubble.pixel.json",
+      "animation": "idle"
+    },
+    "bubble-start": {
+      "recipe": "fx-shield-bubble.pixel.json",
+      "frame": "idle-0"
+    }
+  },
+  "effects": {
+    "up": {
+      "frames": 9,
+      "duration": {
+        "from": 45,
+        "to": 90,
+        "ease": "in"
+      },
+      "seed": 11,
+      "looks": {
+        "bubble": {
+          "colors": [
+            "n",
+            "b",
+            "c",
+            "W"
+          ],
+          "thresholds": [
+            0.18,
+            0.4,
+            0.68,
+            0.9
+          ],
+          "dither": 0.35,
+          "halo": {
+            "color": "d",
+            "width": 2
+          },
+          "hold": 0.3
+        },
+        "shine": {
+          "colors": [
+            "c",
+            "W"
+          ],
+          "thresholds": [
+            0.3,
+            0.75
+          ]
+        }
+      },
+      "cleanup": {
+        "corners": true,
+        "strays": true
+      },
+      "layers": [
+        {
+          "kind": "ring",
+          "look": "bubble",
+          "at": [
+            32,
+            32
+          ],
+          "radius": 22,
+          "width": 11,
+          "power": [
+            0,
+            0.3,
+            0.15
+          ],
+          "noise": 0.3,
+          "scale": 7,
+          "boil": 4,
+          "frames": [
+            4,
+            8
+          ]
+        },
+        {
+          "kind": "ring",
+          "look": "bubble",
+          "at": [
+            32,
+            32
+          ],
+          "radius": [
+            3,
+            25,
+            22
+          ],
+          "width": [
+            5,
+            4,
+            3
+          ],
+          "fill": [
+            0.7,
+            0.2,
+            0
+          ],
+          "noise": [
+            0.1,
+            0.3,
+            0.45
+          ],
+          "scale": 5,
+          "boil": 6,
+          "power": [
+            1.4,
+            1.1,
+            1,
+            0.5
+          ],
+          "seed": 23,
+          "frames": [
+            0,
+            8
+          ]
+        },
+        {
+          "kind": "slash",
+          "look": "shine",
+          "at": [
+            32,
+            32
+          ],
+          "frames": [
+            4,
+            8
+          ],
+          "radius": 19,
+          "width": 2.5,
+          "arc": [
+            195,
+            255
+          ],
+          "reveal": 0.6
+        }
+      ],
+      "emitters": [
+        {
+          "at": [
+            32,
+            32
+          ],
+          "ring": {
+            "radius": [
+              4,
+              8
+            ],
+            "outward": true
+          },
+          "burst": 14,
+          "start": 1,
+          "speed": [
+            1.6,
+            2.6
+          ],
+          "drag": 0.18,
+          "life": [
+            3,
+            5
+          ],
+          "shapes": [
+            "mote-hot",
+            "mote"
+          ]
+        },
+        {
+          "sprite": {
+            "symbol": "bubble-start"
+          },
+          "at": [
+            0,
+            0
+          ],
+          "burst": 580,
+          "start": 7,
+          "speed": 0,
+          "life": [
+            2,
+            2
+          ]
+        },
+        {
+          "sprite": {
+            "symbol": "bubble-start"
+          },
+          "at": [
+            0,
+            0
+          ],
+          "burst": 280,
+          "start": 6,
+          "speed": 0,
+          "life": [
+            3,
+            3
+          ]
+        },
+        {
+          "sprite": {
+            "symbol": "bubble-start"
+          },
+          "at": [
+            0,
+            0
+          ],
+          "burst": 140,
+          "start": 5,
+          "speed": 0,
+          "life": [
+            4,
+            4
+          ]
+        },
+        {
+          "at": [
+            32,
+            32
+          ],
+          "burst": 1,
+          "start": 8,
+          "speed": 0,
+          "life": [
+            1,
+            1
+          ],
+          "shapes": [
+            "bubble-start"
+          ]
+        }
+      ]
+    },
+    "idle": {
+      "frames": 16,
+      "duration": 80,
+      "loop": true,
+      "emitters": [
+        {
+          "sprite": {
+            "symbol": "bubble",
+            "draw": true
+          },
+          "at": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "frames": 7,
+      "duration": {
+        "from": 40,
+        "to": 90,
+        "ease": "in"
+      },
+      "seed": 7,
+      "looks": {
+        "flash": {
+          "colors": [
+            "b",
+            "c",
+            "W"
+          ],
+          "thresholds": [
+            0.2,
+            0.5,
+            0.8
+          ]
+        }
+      },
+      "cleanup": {
+        "corners": true,
+        "strays": true
+      },
+      "layers": [
+        {
+          "kind": "slash",
+          "look": "flash",
+          "at": [
+            32,
+            32
+          ],
+          "frames": [
+            0,
+            5
+          ],
+          "radius": 23,
+          "width": 3,
+          "arc": [
+            -75,
+            15
+          ],
+          "reveal": 0,
+          "power": [
+            1.3,
+            0.5
+          ]
+        },
+        {
+          "kind": "ring",
+          "look": "flash",
+          "at": [
+            32,
+            32
+          ],
+          "frames": [
+            1,
+            6
+          ],
+          "radius": [
+            22,
+            27
+          ],
+          "width": [
+            2,
+            1
+          ],
+          "noise": 0.8,
+          "scale": 4,
+          "power": [
+            0.95,
+            0.25
+          ]
+        },
+        {
+          "kind": "star",
+          "look": "flash",
+          "at": [
+            51,
+            21
+          ],
+          "frames": [
+            0,
+            4
+          ],
+          "radius": [
+            10,
+            3
+          ],
+          "width": [
+            3,
+            1
+          ],
+          "points": 6,
+          "ratio": 0.5,
+          "angle": -30,
+          "jitter": 0.2,
+          "power": [
+            1.3,
+            0.6
+          ],
+          "cue": "hit"
+        },
+        {
+          "kind": "burst",
+          "look": "flash",
+          "at": [
+            51,
+            21
+          ],
+          "frames": [
+            0,
+            3
+          ],
+          "radius": [
+            6,
+            2
+          ],
+          "noise": 0.3,
+          "scale": 3,
+          "power": [
+            1.3,
+            0.7
+          ]
+        }
+      ],
+      "emitters": [
+        {
+          "at": [
+            51,
+            21
+          ],
+          "burst": 10,
+          "start": 1,
+          "angle": [
+            -110,
+            50
+          ],
+          "speed": [
+            1,
+            1.9
+          ],
+          "gravity": [
+            0,
+            0.15
+          ],
+          "drag": 0.12,
+          "life": [
+            3,
+            5
+          ],
+          "shapes": [
+            "mote-hot",
+            "mote"
+          ],
+          "trail": {
+            "color": "c",
+            "length": 1
+          }
+        }
+      ]
+    },
+    "pop": {
+      "frames": 10,
+      "duration": {
+        "from": 45,
+        "to": 90,
+        "ease": "in"
+      },
+      "seed": 9,
+      "looks": {
+        "bubble": {
+          "colors": [
+            "n",
+            "b",
+            "c",
+            "W"
+          ],
+          "thresholds": [
+            0.18,
+            0.4,
+            0.68,
+            0.9
+          ],
+          "dither": 0.35,
+          "halo": {
+            "color": "d",
+            "width": 2
+          },
+          "hold": 0.3
+        },
+        "shine": {
+          "colors": [
+            "c",
+            "W"
+          ],
+          "thresholds": [
+            0.3,
+            0.75
+          ]
+        }
+      },
+      "cleanup": {
+        "corners": true,
+        "strays": true
+      },
+      "layers": [
+        {
+          "kind": "ring",
+          "look": "bubble",
+          "at": [
+            32,
+            32
+          ],
+          "frames": [
+            0,
+            7
+          ],
+          "radius": [
+            22,
+            27
+          ],
+          "width": [
+            3,
+            2
+          ],
+          "fill": [
+            0.5,
+            0
+          ],
+          "noise": [
+            0.45,
+            0.95
+          ],
+          "scale": 4,
+          "boil": 6,
+          "power": [
+            1.4,
+            0.15
+          ]
+        },
+        {
+          "kind": "slash",
+          "look": "shine",
+          "at": [
+            32,
+            32
+          ],
+          "frames": [
+            0,
+            3
+          ],
+          "radius": 19,
+          "width": 2.5,
+          "arc": [
+            195,
+            255
+          ],
+          "reveal": 0,
+          "power": [
+            1,
+            0.3
+          ]
+        }
+      ],
+      "emitters": [
+        {
+          "at": [
+            32,
+            32
+          ],
+          "ring": {
+            "radius": 22,
+            "outward": true,
+            "even": true
+          },
+          "burst": 22,
+          "start": 1,
+          "speed": [
+            0.9,
+            1.8
+          ],
+          "drag": 0.12,
+          "life": [
+            4,
+            8
+          ],
+          "shapes": [
+            "mote-hot",
+            "mote",
+            "fleck",
+            "fleck-d"
+          ]
+        }
+      ]
+    }
+  }
+}
