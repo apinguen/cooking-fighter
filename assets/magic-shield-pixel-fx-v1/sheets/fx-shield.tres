@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://c748jt32x02dd"]
 
-[ext_resource type="Texture2D" path="fx-shield.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://3kp74qx6slbt" path="res://assets/magic-shield-pixel-fx-v1/sheets/fx-shield.png" id="1_sheet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_up_0"]
 atlas = ExtResource("1_sheet")
@@ -45,6 +45,41 @@ filter_clip = true
 [sub_resource type="AtlasTexture" id="AtlasTexture_up_8"]
 atlas = ExtResource("1_sheet")
 region = Rect2(0, 64, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(64, 192, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(128, 192, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(192, 192, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(256, 192, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(320, 192, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(384, 192, 64, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit_6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(448, 192, 64, 64)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
@@ -127,41 +162,6 @@ atlas = ExtResource("1_sheet")
 region = Rect2(0, 192, 64, 64)
 filter_clip = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_0"]
-atlas = ExtResource("1_sheet")
-region = Rect2(64, 192, 64, 64)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_1"]
-atlas = ExtResource("1_sheet")
-region = Rect2(128, 192, 64, 64)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_2"]
-atlas = ExtResource("1_sheet")
-region = Rect2(192, 192, 64, 64)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_3"]
-atlas = ExtResource("1_sheet")
-region = Rect2(256, 192, 64, 64)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_4"]
-atlas = ExtResource("1_sheet")
-region = Rect2(320, 192, 64, 64)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_5"]
-atlas = ExtResource("1_sheet")
-region = Rect2(384, 192, 64, 64)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hit_6"]
-atlas = ExtResource("1_sheet")
-region = Rect2(448, 192, 64, 64)
-filter_clip = true
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pop_0"]
 atlas = ExtResource("1_sheet")
 region = Rect2(0, 256, 64, 64)
@@ -221,30 +221,56 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_up_1")
 }, {
-"duration": 1.0222222222222221,
+"duration": 1.0222223,
 "texture": SubResource("AtlasTexture_up_2")
 }, {
-"duration": 1.0444444444444445,
+"duration": 1.0444444,
 "texture": SubResource("AtlasTexture_up_3")
 }, {
-"duration": 1.1333333333333333,
+"duration": 1.1333333,
 "texture": SubResource("AtlasTexture_up_4")
 }, {
-"duration": 1.2444444444444445,
+"duration": 1.2444445,
 "texture": SubResource("AtlasTexture_up_5")
 }, {
-"duration": 1.4222222222222223,
+"duration": 1.4222223,
 "texture": SubResource("AtlasTexture_up_6")
 }, {
-"duration": 1.6666666666666667,
+"duration": 1.6666666,
 "texture": SubResource("AtlasTexture_up_7")
 }, {
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_up_8")
 }],
-"loop": false,
-"name": &"up",
+"loop": 0,
+"name": &"deploy",
 "speed": 22.22222222222222
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit_1")
+}, {
+"duration": 1.05,
+"texture": SubResource("AtlasTexture_hit_2")
+}, {
+"duration": 1.15,
+"texture": SubResource("AtlasTexture_hit_3")
+}, {
+"duration": 1.375,
+"texture": SubResource("AtlasTexture_hit_4")
+}, {
+"duration": 1.725,
+"texture": SubResource("AtlasTexture_hit_5")
+}, {
+"duration": 2.25,
+"texture": SubResource("AtlasTexture_hit_6")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -295,35 +321,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_idle_15")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 12.5
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hit_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hit_1")
-}, {
-"duration": 1.05,
-"texture": SubResource("AtlasTexture_hit_2")
-}, {
-"duration": 1.15,
-"texture": SubResource("AtlasTexture_hit_3")
-}, {
-"duration": 1.375,
-"texture": SubResource("AtlasTexture_hit_4")
-}, {
-"duration": 1.725,
-"texture": SubResource("AtlasTexture_hit_5")
-}, {
-"duration": 2.25,
-"texture": SubResource("AtlasTexture_hit_6")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -335,28 +335,28 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pop_2")
 }, {
-"duration": 1.0444444444444445,
+"duration": 1.0444444,
 "texture": SubResource("AtlasTexture_pop_3")
 }, {
-"duration": 1.0888888888888888,
+"duration": 1.0888889,
 "texture": SubResource("AtlasTexture_pop_4")
 }, {
-"duration": 1.1777777777777778,
+"duration": 1.1777778,
 "texture": SubResource("AtlasTexture_pop_5")
 }, {
-"duration": 1.288888888888889,
+"duration": 1.2888889,
 "texture": SubResource("AtlasTexture_pop_6")
 }, {
-"duration": 1.4666666666666666,
+"duration": 1.4666667,
 "texture": SubResource("AtlasTexture_pop_7")
 }, {
-"duration": 1.711111111111111,
+"duration": 1.7111111,
 "texture": SubResource("AtlasTexture_pop_8")
 }, {
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_pop_9")
 }],
-"loop": false,
+"loop": 0,
 "name": &"pop",
 "speed": 22.22222222222222
 }]

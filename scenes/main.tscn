@@ -4,13 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dttuegog5gmpt" path="res://scenes/player.tscn" id="1_o5qli"]
 
 [node name="Main" type="Node2D" unique_id=1803285081]
+metadata/_edit_horizontal_guides_ = [2322.0]
+metadata/_edit_vertical_guides_ = [3513.0]
 
 [node name="World" type="Node2D" parent="." unique_id=286600314]
 
 [node name="Shop" parent="World" unique_id=316405644 instance=ExtResource("1_0wfyh")]
+scale = Vector2(5, 5)
 
 [node name="Player" parent="World" unique_id=1744537495 instance=ExtResource("1_o5qli")]
-position = Vector2(174, 141)
+position = Vector2(1350, 1170)
+scale = Vector2(4, 4)
 
 [node name="UI" type="Node2D" parent="." unique_id=1004058969]
 
