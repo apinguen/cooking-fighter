@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bbikjsyypi7gv" path="res://scenes/shop.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dttuegog5gmpt" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dh3nuuunpel2w" path="res://scenes/level.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://rcc1k1nn4a6v" path="res://scenes/enemy.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=1803285081]
 metadata/_edit_horizontal_guides_ = [2322.0]
@@ -10,11 +12,19 @@ metadata/_edit_vertical_guides_ = [3513.0]
 [node name="World" type="Node2D" parent="." unique_id=286600314]
 
 [node name="Shop" parent="World" unique_id=316405644 instance=ExtResource("1_0wfyh")]
+visible = false
 scale = Vector2(5, 5)
+
+[node name="Level" parent="World" unique_id=186244159 instance=ExtResource("3_sugp2")]
+scale = Vector2(4, 4)
 
 [node name="Player" parent="World" unique_id=1744537495 instance=ExtResource("1_o5qli")]
 position = Vector2(1350, 1170)
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
+
+[node name="Enemy" parent="World" unique_id=1686498274 instance=ExtResource("4_jyhfs")]
+position = Vector2(1908, 2080)
+scale = Vector2(3, 3)
 
 [node name="UI" type="Node2D" parent="." unique_id=1004058969]
 
