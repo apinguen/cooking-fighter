@@ -15,4 +15,3 @@ Tab - Inventory
 AI (Claude Code) was used to debug a few of the issues in the code, namely:
 - Fixing collision layers so they were correctly set (I accidentally set the render layers instead of collision layers)
 - The need to call "call_deferred" for enemies to correctly drop food
-- 
