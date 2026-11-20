@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dbs3ys8dc626l"]
+
+[ext_resource type="Texture2D" uid="uid://c2y60437hlqcn" path="res://assets/Food/cake_strawberry.png" id="1_qobe3"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_ew8fj"]
+
+[resource]
+script = ExtResource("2_ew8fj")
+display_name = "Strawberry Cake"
+icon = ExtResource("1_qobe3")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

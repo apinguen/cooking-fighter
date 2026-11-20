@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://di60thtyft5wy"]
+
+[ext_resource type="Texture2D" uid="uid://c76mavu1l10b" path="res://assets/Food/canned_soup.png" id="1_3qh2j"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_4xem4"]
+
+[resource]
+script = ExtResource("2_4xem4")
+display_name = "Canned Soup"
+icon = ExtResource("1_3qh2j")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://c3wjpfofmvun4"]
+
+[ext_resource type="Texture2D" uid="uid://dwrtw1001e367" path="res://assets/Food/cheese_blue.png" id="1_6m5j0"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_87dnt"]
+
+[resource]
+script = ExtResource("2_87dnt")
+display_name = "Blue Cheese"
+icon = ExtResource("1_6m5j0")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

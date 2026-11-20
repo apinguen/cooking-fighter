@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dupwqenvva1ai"]
+
+[ext_resource type="Texture2D" uid="uid://brovky6burjnc" path="res://assets/Food/vegetable_potato.png" id="1_iuyv8"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_s64nw"]
+
+[resource]
+script = ExtResource("2_s64nw")
+display_name = "Potato"
+icon = ExtResource("1_iuyv8")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

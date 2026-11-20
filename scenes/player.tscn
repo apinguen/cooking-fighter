@@ -1,173 +1,11 @@
 [gd_scene format=3 uid="uid://dttuegog5gmpt"]
 
 [ext_resource type="Texture2D" uid="uid://4s5c23wet5xv" path="res://assets/Goose/Flap.png" id="1_e80uo"]
+[ext_resource type="Script" uid="uid://bwodmfavyo7lv" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://bko1k4b64qaxf" path="res://assets/Goose/Idle.png" id="2_cxr5p"]
 [ext_resource type="Texture2D" uid="uid://ck56dx36mcwa3" path="res://assets/Goose/Run.png" id="3_tdg3f"]
 [ext_resource type="Texture2D" uid="uid://bdfl8brpyv6gt" path="res://assets/Goose/Walk.png" id="4_dtqjt"]
 [ext_resource type="SpriteFrames" uid="uid://c748jt32x02dd" path="res://assets/magic-shield-pixel-fx-v1/sheets/fx-shield.tres" id="6_tuyoq"]
-
-[sub_resource type="GDScript" id="GDScript_tuyoq"]
-resource_name = "player.gd"
-script/source = "extends CharacterBody2D
-
-
-const SPEED: float = 300.0
-const SPRINT_SPEED: float = 600.0
-const JUMP_VELOCITY: float = -600.0
-const ACCEL: float = 1500
-const GRAVITY_SCALAR: float = 1
-
-var input: Vector2 = Vector2(0,0)
-
-var last_dir: float = 1
-var sprint: bool = false
-
-enum PlayerStates {
-	IDLE,
-	MOVE,
-	ATTACK,
-	SHIELD,
-}
-
-enum MovementStyles {
-	TOP,
-	SIDE,
-}
-
-enum ShieldStates {
-	HIDDEN,
-	DEPLOY,
-	IDLE,
-	HIT,
-	POP,
-}
-
-@export var state: PlayerStates = PlayerStates.IDLE
-var movement_style: MovementStyles = MovementStyles.SIDE
-var shield_state: ShieldStates = ShieldStates.HIDDEN
-
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shield_sprite: AnimatedSprite2D = $Shield
-@onready var camera_2d: Camera2D = $Camera2D
-
-func _ready() -> void:
-	shield_sprite.hide()
-	
-
-func _physics_process(delta: float) -> void:
-	if (movement_style == MovementStyles.TOP):
-		camera_2d.limit_enabled = true
-	else:
-		camera_2d.limit_enabled = false
-		
-	process_input()
-	if (movement_style == MovementStyles.TOP):
-		process_movement_top(delta)
-	else:
-		process_movement_side(delta)
-		
-	play_animation()
-	move_and_slide()
-	#print(PlayerStates.keys()[state])
-
-func process_input():
-	input = Input.get_vector(\"left\", \"right\",\"up\",\"down\")
-	if (input.length() > 1.0):
-		input = input.normalized()
-		
-	if (movement_style == MovementStyles.SIDE):
-		if (state == PlayerStates.IDLE || state == PlayerStates.MOVE):
-			if (Input.is_action_just_pressed(\"attack\")):
-				state = PlayerStates.ATTACK
-				animated_sprite_2d.play(\"attack_right\")
-				return
-		
-		if (state != PlayerStates.SHIELD):
-			if (Input.is_action_just_pressed(\"shield\")):
-				shield_sprite.visible = true
-				state = PlayerStates.SHIELD
-				shield_state = ShieldStates.DEPLOY
-				shield_sprite.play(\"deploy\")
-				return
-		else:
-			if (Input.is_action_just_released(\"shield\")):
-				shield_state = ShieldStates.POP
-				shield_sprite.play(\"pop\")
-				state = PlayerStates.IDLE
-			
-	
-	if (state != PlayerStates.ATTACK && state != PlayerStates.SHIELD):
-		if (input):
-			state = PlayerStates.MOVE
-		else:
-			state = PlayerStates.IDLE
-
-func process_movement_top(delta: float) -> void:
-	sprint = Input.is_action_pressed(\"sprint\")
-	
-	if (state == PlayerStates.MOVE):
-		if (sprint):
-			velocity.x = move_toward(velocity.x, input.x * SPRINT_SPEED, ACCEL * delta)
-		else:
-			velocity.x = move_toward(velocity.x, input.x * SPEED, ACCEL * delta)
-	else:
-		velocity.x = move_toward(0, input.x * SPEED, ACCEL * delta)
-	
-	if (Input.get_axis(\"left\", \"right\")):
-		last_dir = Input.get_axis(\"left\", \"right\")
-		
-
-func process_movement_side(delta: float) -> void:
-	sprint = Input.is_action_pressed(\"sprint\")
-	if !is_on_floor():
-		velocity.y += get_gravity().y * delta * GRAVITY_SCALAR
-	
-	if (state == PlayerStates.MOVE):
-			
-		if Input.is_action_just_pressed(\"up\") && is_on_floor():
-			velocity.y = JUMP_VELOCITY
-		
-		if (sprint):
-			velocity.x = move_toward(velocity.x, input.x * SPRINT_SPEED, ACCEL * delta)
-		else:
-			velocity.x = move_toward(velocity.x, input.x * SPEED, ACCEL * delta)
-		
-	else:
-		velocity.x = move_toward(velocity.x, 0, ACCEL * delta)
-		
-	if (Input.get_axis(\"left\", \"right\")):
-		last_dir = Input.get_axis(\"left\", \"right\")
-
-
-func play_animation() -> void:
-	animated_sprite_2d.flip_h = last_dir < 0
-	if (state == PlayerStates.MOVE):
-		if (sprint):
-			animated_sprite_2d.play(\"run_right\")
-		else:
-			animated_sprite_2d.play(\"walk_right\")
-	else:
-		animated_sprite_2d.play(\"idle_right\")
-	
-			
-func transition_to_mode(mode: MovementStyles):
-	velocity = Vector2.ZERO
-	movement_style = mode
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if (state == PlayerStates.ATTACK):
-		state = PlayerStates.IDLE
-	
-
-func _on_shield_animation_finished() -> void:
-	match shield_state:
-		ShieldStates.DEPLOY:
-			shield_state = ShieldStates.IDLE
-			shield_sprite.play(\"idle\")
-		ShieldStates.POP:
-			shield_state = ShieldStates.HIDDEN
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_e80uo")
@@ -329,8 +167,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5febu"]
 size = Vector2(18, 18)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5febu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5febu"]
+radius = 34.0147
+
 [node name="Player" type="CharacterBody2D" unique_id=1744537495]
-script = SubResource("GDScript_tuyoq")
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1212821218]
 texture_filter = 1
@@ -341,13 +186,6 @@ animation = &"idle_right"
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_5febu")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=902337726]
-limit_left = 0
-limit_top = 0
-limit_right = 3520
-limit_bottom = 2320
-limit_smoothed = true
-
 [node name="Shield" type="AnimatedSprite2D" parent="." unique_id=1721212163]
 visible = false
 scale = Vector2(1.5, 1.5)
@@ -355,5 +193,26 @@ sprite_frames = ExtResource("6_tuyoq")
 animation = &"pop"
 offset = Vector2(0, -10)
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=625894031]
+collision_layer = 2
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1274478257]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_5febu")
+
+[node name="ShieldHitbox" type="Area2D" parent="." unique_id=1413038765]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldHitbox" unique_id=1971853385]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_5febu")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1412325155]
+enabled = false
+process_callback = 0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="Shield" to="." method="_on_shield_animation_finished"]
+[connection signal="area_entered" from="ShieldHitbox" to="." method="_on_shield_hitbox_area_entered"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://cd2nnxolf7pya"]
+
+[ext_resource type="Texture2D" uid="uid://cdxiwa8gu8044" path="res://assets/Food/coffee_darkroast.png" id="1_bywhj"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_fqvia"]
+
+[resource]
+script = ExtResource("2_fqvia")
+display_name = "Coffee Bean"
+icon = ExtResource("1_bywhj")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

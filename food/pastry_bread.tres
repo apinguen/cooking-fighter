@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://b7chcu46qnd43"]
+
+[ext_resource type="Texture2D" uid="uid://b836in3oxg6v5" path="res://assets/Food/pastry_bread.png" id="1_q7rrh"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_voexc"]
+
+[resource]
+script = ExtResource("2_voexc")
+display_name = "Bread"
+icon = ExtResource("1_q7rrh")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

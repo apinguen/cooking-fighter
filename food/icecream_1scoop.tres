@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://c0fvp874xw0nm"]
+
+[ext_resource type="Texture2D" uid="uid://ciyy2f2k3hlpj" path="res://assets/Food/icecream_1scoop.png" id="1_agr0m"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_r12ab"]
+
+[resource]
+script = ExtResource("2_r12ab")
+display_name = "One Scoop Ice Cream"
+icon = ExtResource("1_agr0m")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

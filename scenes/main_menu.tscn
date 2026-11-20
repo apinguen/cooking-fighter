@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://1p07r0p2nuu1"]
+
+[ext_resource type="Script" uid="uid://yw0lvff1shx1" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node2D" unique_id=813704211 node_paths=PackedStringArray("play_button")]
+script = ExtResource("1_l6cm7")
+initial_scene = &"uid://cyy7fm4arcs8p"
+play_button = NodePath("CanvasLayer/Button")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=896496341]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=575021617]
+offset_left = 474.0
+offset_top = 295.0
+offset_right = 728.0
+offset_bottom = 394.0
+text = "Play"

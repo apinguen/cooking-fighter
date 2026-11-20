@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://ddfqp1estysv0"]
+
+[ext_resource type="Texture2D" uid="uid://cb0i26p14ck67" path="res://assets/Food/cake_matcha.png" id="1_sssrh"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_mxm2p"]
+
+[resource]
+script = ExtResource("2_mxm2p")
+display_name = "Matcha Cake"
+icon = ExtResource("1_sssrh")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

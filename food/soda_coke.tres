@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://fs6tv16tvuxk"]
+
+[ext_resource type="Texture2D" uid="uid://gi2tg7a300kp" path="res://assets/Food/soda_coke.png" id="1_1rbbp"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_3hnuk"]
+
+[resource]
+script = ExtResource("2_3hnuk")
+display_name = "Coke"
+icon = ExtResource("1_1rbbp")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

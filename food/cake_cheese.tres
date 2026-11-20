@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://djdn6hh7mfaki"]
+
+[ext_resource type="Texture2D" uid="uid://d071itqbslf8c" path="res://assets/Food/cake_cheese.png" id="1_da22y"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_2pxh2"]
+
+[resource]
+script = ExtResource("2_2pxh2")
+display_name = "Cheesecake"
+icon = ExtResource("1_da22y")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

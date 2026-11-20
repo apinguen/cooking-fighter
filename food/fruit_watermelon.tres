@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://blskpatw5bbu1"]
+
+[ext_resource type="Texture2D" uid="uid://c7q1w68tkp8lr" path="res://assets/Food/fruit_watermelon.png" id="1_4f7j2"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_q03to"]
+
+[resource]
+script = ExtResource("2_q03to")
+display_name = "Watermelon"
+icon = ExtResource("1_4f7j2")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

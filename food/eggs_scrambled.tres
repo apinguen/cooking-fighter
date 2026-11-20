@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://wfl2lnk21ljc"]
+
+[ext_resource type="Texture2D" uid="uid://bjffem5hri1q3" path="res://assets/Food/eggs_scrambled.png" id="1_ab8rs"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_h8a60"]
+
+[resource]
+script = ExtResource("2_h8a60")
+display_name = "Scrambled Egg"
+icon = ExtResource("1_ab8rs")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

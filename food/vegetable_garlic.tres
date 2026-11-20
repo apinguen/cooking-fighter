@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://cl5mfmutytkyu"]
+
+[ext_resource type="Texture2D" uid="uid://b0jjrmlfhe1ad" path="res://assets/Food/vegetable_garlic.png" id="1_mdh0n"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_doikk"]
+
+[resource]
+script = ExtResource("2_doikk")
+display_name = "Garlic"
+icon = ExtResource("1_mdh0n")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

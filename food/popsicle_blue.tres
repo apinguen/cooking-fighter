@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dw4cldaej2j0d"]
+
+[ext_resource type="Texture2D" uid="uid://c3kqtj7q866mt" path="res://assets/Food/popsicle_blue.png" id="1_ice8m"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_2t0t3"]
+
+[resource]
+script = ExtResource("2_2t0t3")
+display_name = "Blue Popsicle"
+icon = ExtResource("1_ice8m")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

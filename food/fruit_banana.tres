@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://crwsvc6wbbhd6"]
+
+[ext_resource type="Texture2D" uid="uid://bgvsqsanv18i4" path="res://assets/Food/fruit_banana.png" id="1_xulqt"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_jx0vs"]
+
+[resource]
+script = ExtResource("2_jx0vs")
+display_name = "Banana"
+icon = ExtResource("1_xulqt")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

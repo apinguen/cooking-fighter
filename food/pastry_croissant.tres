@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://4mtk6ae1xvc"]
+
+[ext_resource type="Texture2D" uid="uid://clph4fis1615d" path="res://assets/Food/pastry_croissant.png" id="1_hd4qs"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_qyhd0"]
+
+[resource]
+script = ExtResource("2_qyhd0")
+display_name = "Croissant"
+icon = ExtResource("1_hd4qs")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

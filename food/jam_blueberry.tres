@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://7vh7da7xy3rd"]
+
+[ext_resource type="Texture2D" uid="uid://cteadb1nbjxqj" path="res://assets/Food/jam_blueberry.png" id="1_h5yb7"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_27gom"]
+
+[resource]
+script = ExtResource("2_27gom")
+display_name = "Blueberry Jam"
+icon = ExtResource("1_h5yb7")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

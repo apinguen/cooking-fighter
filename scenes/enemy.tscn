@@ -1,123 +1,43 @@
 [gd_scene format=3 uid="uid://rcc1k1nn4a6v"]
 
 [ext_resource type="Texture2D" uid="uid://bkhpg1jlk6ut4" path="res://assets/bread_spritesheet.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://byqs4mk4h756n" path="res://scripts/enemy.gd" id="1_xwavj"]
 [ext_resource type="Texture2D" uid="uid://sx8ajdxuxi14" path="res://assets/Tomato-Sheet.png" id="2_4ra3w"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_x6q4o"]
+[ext_resource type="Resource" uid="uid://djdn6hh7mfaki" path="res://food/cake_cheese.tres" id="3_2tuss"]
 [ext_resource type="Texture2D" uid="uid://n805vltp16ij" path="res://assets/donut_spritesheet.png" id="3_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://e81hvyssgo85" path="res://assets/Carrot-sheet.png" id="4_5uy6h"]
+[ext_resource type="Resource" uid="uid://cmqgpvm27oa0p" path="res://food/cake_chocolate.tres" id="4_7v6cf"]
 [ext_resource type="Texture2D" uid="uid://b0oi37tawr2nw" path="res://assets/burger_spritesheet.png" id="5_c4w8v"]
-
-[sub_resource type="GDScript" id="GDScript_5febu"]
-resource_name = "enemy"
-script/source = "extends CharacterBody2D
-
-const PATROL_SPEED: float = 50.0
-const JUMP_VELOCITY = -600
-
-enum MovementTypes {
-	STATIC,
-	PATROL,
-	STATIC_AND_CHASE,
-	PATROL_FREEZE,
-}
-
-enum EnemyStates {
-	IDLE,
-	WALK,
-	ATTACK_CHARGE,
-	ATTACK,
-	DYING,
-	DEAD,
-}
-
-@export var movement_type: MovementTypes = MovementTypes.PATROL_FREEZE
-var state: EnemyStates = EnemyStates.IDLE
-
-var direction: float = 1
-
-@onready var bread_sprite: AnimatedSprite2D = $BreadSprite
-@onready var tomato_sprite: AnimatedSprite2D = $TomatoSprite
-@onready var donut_sprite: AnimatedSprite2D = $DonutSprite
-@onready var carrot_sprite: AnimatedSprite2D = $CarrotSprite
-@onready var burger_sprite: AnimatedSprite2D = $BurgerSprite
-var sprites = []
-
-@onready var ray_cast_left: RayCast2D = $RayCastLeft
-@onready var ray_cast_right: RayCast2D = $RayCastRight
-
-
-enum EnemyTypes {
-	BREAD,
-	TOMATO,
-	DONUT,
-	CARROT,
-	BURGER,
-}
-
-@export var type: EnemyTypes = EnemyTypes.BREAD
-
-func _ready() -> void:
-	sprites = [bread_sprite, tomato_sprite, donut_sprite, carrot_sprite, burger_sprite]
-	for sprite in sprites:
-		sprite.hide()
-	
-	sprites[state].show()
-	
-	match movement_type:
-		MovementTypes.PATROL, MovementTypes.PATROL_FREEZE:
-			state = EnemyStates.WALK
-		MovementTypes.STATIC:
-			state = EnemyStates.IDLE
-	
-
-func _physics_process(delta: float) -> void:
-	movement(delta)
-	animate()
-	move_and_slide()
-
-func movement(delta: float) -> void:
-	if (!is_on_floor()):
-		velocity.y += get_gravity().y * delta
-		
-		
-	match movement_type:
-		MovementTypes.PATROL, MovementTypes.PATROL_FREEZE:
-			if (state == EnemyStates.WALK):
-				if (!ray_cast_left.is_colliding()):
-					direction = 1
-				elif (!ray_cast_right.is_colliding()):
-					direction = -1
-				velocity.x = PATROL_SPEED * direction
-			else:
-				velocity.x = 0
-		
-func animate():
-	
-	match type:
-		EnemyTypes.BREAD:
-			bread_sprite.flip_h = direction < 0
-			match state:
-				EnemyStates.IDLE:
-					bread_sprite.play(\"idle_right\")
-				EnemyStates.WALK:
-					bread_sprite.play(\"walk_right\")
-				_:
-					bread_sprite.play(\"idle_right\")
-		EnemyTypes.TOMATO:
-			tomato_sprite.flip_h = direction > 0
-			match state:
-				EnemyStates.IDLE:
-					tomato_sprite.play(\"idle_left\")
-				EnemyStates.ATTACK_CHARGE:
-					tomato_sprite.play(\"attack_prepare_left\")
-					
-
-
-func _on_tomato_sprite_animation_finished() -> void:
-	if (type == EnemyTypes.TOMATO):
-		if (state == EnemyStates.ATTACK_CHARGE):
-			tomato_sprite.play(\"attack_final_left\")
-			state = EnemyStates.ATTACK
-"
+[ext_resource type="Resource" uid="uid://ddfqp1estysv0" path="res://food/cake_matcha.tres" id="5_vab5u"]
+[ext_resource type="Resource" uid="uid://d14ixt6ftuc6v" path="res://food/cake_redvelvet.tres" id="6_qiusc"]
+[ext_resource type="Resource" uid="uid://dbs3ys8dc626l" path="res://food/cake_strawberry.tres" id="7_5ie7m"]
+[ext_resource type="Resource" uid="uid://di60thtyft5wy" path="res://food/canned_soup.tres" id="8_ya47j"]
+[ext_resource type="Resource" uid="uid://c3wjpfofmvun4" path="res://food/cheese_blue.tres" id="9_hyejq"]
+[ext_resource type="Resource" uid="uid://cd2nnxolf7pya" path="res://food/coffee_darkroast.tres" id="10_j0dkt"]
+[ext_resource type="Resource" uid="uid://dobwfthmt1bdp" path="res://food/coffee_greentea.tres" id="11_sdxul"]
+[ext_resource type="Resource" uid="uid://j07c377q1xtr" path="res://food/coffee_mocha.tres" id="12_e7lhw"]
+[ext_resource type="Resource" uid="uid://bhl7a1gimnmeg" path="res://food/eggs_brown.tres" id="13_gst0f"]
+[ext_resource type="Resource" uid="uid://c5g15ga8v8s28" path="res://food/eggs_fried.tres" id="14_sm4rh"]
+[ext_resource type="Resource" uid="uid://bcsuik3c0suko" path="res://food/eggs_overeasy.tres" id="15_5lniq"]
+[ext_resource type="Resource" uid="uid://wfl2lnk21ljc" path="res://food/eggs_scrambled.tres" id="16_7w3jn"]
+[ext_resource type="Resource" uid="uid://wj0egs0ajnip" path="res://food/fruit_apple.tres" id="17_uiwvf"]
+[ext_resource type="Resource" uid="uid://crwsvc6wbbhd6" path="res://food/fruit_banana.tres" id="18_0pw1s"]
+[ext_resource type="Resource" uid="uid://bdgfy5y7ao6ii" path="res://food/fruit_lemon.tres" id="19_b5geg"]
+[ext_resource type="Resource" uid="uid://blskpatw5bbu1" path="res://food/fruit_watermelon.tres" id="20_g0yyi"]
+[ext_resource type="Resource" uid="uid://c0fvp874xw0nm" path="res://food/icecream_1scoop.tres" id="21_5utat"]
+[ext_resource type="Resource" uid="uid://dfulr6b1ijx42" path="res://food/icecream_2scoops.tres" id="22_0b4fd"]
+[ext_resource type="Resource" uid="uid://7vh7da7xy3rd" path="res://food/jam_blueberry.tres" id="23_13roy"]
+[ext_resource type="Resource" uid="uid://ofqeg28wd18f" path="res://food/onigiri_1.tres" id="24_a5akt"]
+[ext_resource type="Resource" uid="uid://cign0jxxr7kqe" path="res://food/pastry_baguette.tres" id="25_4lt7r"]
+[ext_resource type="Resource" uid="uid://b7chcu46qnd43" path="res://food/pastry_bread.tres" id="26_tysqt"]
+[ext_resource type="Resource" uid="uid://4mtk6ae1xvc" path="res://food/pastry_croissant.tres" id="27_kbbx4"]
+[ext_resource type="Resource" uid="uid://ccjhtjsv45ysc" path="res://food/pastry_pretzel.tres" id="28_x24ca"]
+[ext_resource type="Resource" uid="uid://dw4cldaej2j0d" path="res://food/popsicle_blue.tres" id="29_3yi8r"]
+[ext_resource type="Resource" uid="uid://fs6tv16tvuxk" path="res://food/soda_coke.tres" id="30_yb7ap"]
+[ext_resource type="Resource" uid="uid://cxbjf1onvt22q" path="res://food/vegetable_eggplant.tres" id="31_by3os"]
+[ext_resource type="Resource" uid="uid://cl5mfmutytkyu" path="res://food/vegetable_garlic.tres" id="32_o6r7o"]
+[ext_resource type="Resource" uid="uid://dupwqenvva1ai" path="res://food/vegetable_potato.tres" id="33_ef2cb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -972,7 +892,10 @@ height = 22.0
 radius = 60.00833
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1686498274]
-script = SubResource("GDScript_5febu")
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_xwavj")
+drops = Array[ExtResource("2_x6q4o")]([ExtResource("3_2tuss"), ExtResource("4_7v6cf"), ExtResource("5_vab5u"), ExtResource("6_qiusc"), ExtResource("7_5ie7m"), ExtResource("8_ya47j"), ExtResource("9_hyejq"), ExtResource("10_j0dkt"), ExtResource("11_sdxul"), ExtResource("12_e7lhw"), ExtResource("13_gst0f"), ExtResource("14_sm4rh"), ExtResource("15_5lniq"), ExtResource("16_7w3jn"), ExtResource("17_uiwvf"), ExtResource("18_0pw1s"), ExtResource("19_b5geg"), ExtResource("20_g0yyi"), ExtResource("21_5utat"), ExtResource("22_0b4fd"), ExtResource("23_13roy"), ExtResource("24_a5akt"), ExtResource("25_4lt7r"), ExtResource("26_tysqt"), ExtResource("27_kbbx4"), ExtResource("28_x24ca"), ExtResource("29_3yi8r"), ExtResource("30_yb7ap"), ExtResource("31_by3os"), ExtResource("32_o6r7o"), ExtResource("33_ef2cb")])
 
 [node name="BreadSprite" type="AnimatedSprite2D" parent="." unique_id=748423228]
 sprite_frames = SubResource("SpriteFrames_5febu")
@@ -992,22 +915,24 @@ offset = Vector2(0, -9)
 [node name="CarrotSprite" type="AnimatedSprite2D" parent="." unique_id=701131449]
 sprite_frames = SubResource("SpriteFrames_v2y53")
 animation = &"idle_left"
-frame_progress = 0.8232446
+frame_progress = 0.72838855
 offset = Vector2(0, -16)
 
 [node name="BurgerSprite" type="AnimatedSprite2D" parent="." unique_id=1357363461]
 sprite_frames = SubResource("SpriteFrames_wvwpw")
 animation = &"walk_right"
-frame_progress = 0.8678875
+frame_progress = 0.9909207
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078823155]
 position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_5febu")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1464277449]
+[node name="EnemyHitbox" type="Area2D" parent="." unique_id=1464277449]
+collision_layer = 4
+collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1782498939]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox" unique_id=1782498939]
 position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_5febu")
 
@@ -1018,15 +943,32 @@ position = Vector2(-12, -20)
 position = Vector2(12, -20)
 
 [node name="AggroAreaShoot" type="Area2D" parent="." unique_id=1112354103]
+scale = Vector2(3, 3)
+collision_layer = 32768
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroAreaShoot" unique_id=514201039]
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_6453q")
 
 [node name="AggroAreaMelee" type="Area2D" parent="." unique_id=176605480]
+collision_layer = 32768
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroAreaMelee" unique_id=1916596836]
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_6453q")
 
+[node name="ShotTimer" type="Timer" parent="." unique_id=1490756619]
+wait_time = 0.5
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=985753266]
+
 [connection signal="animation_finished" from="TomatoSprite" to="." method="_on_tomato_sprite_animation_finished"]
+[connection signal="body_entered" from="EnemyHitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="area_entered" from="AggroAreaShoot" to="." method="_on_aggro_area_shoot_area_entered"]
+[connection signal="area_exited" from="AggroAreaShoot" to="." method="_on_aggro_area_shoot_area_exited"]
+[connection signal="area_entered" from="AggroAreaMelee" to="." method="_on_aggro_area_melee_area_entered"]
+[connection signal="area_exited" from="AggroAreaMelee" to="." method="_on_aggro_area_melee_area_exited"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

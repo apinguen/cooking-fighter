@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://j07c377q1xtr"]
+
+[ext_resource type="Texture2D" uid="uid://mp4p2n4dwbc0" path="res://assets/Food/coffee_mocha.png" id="1_klit4"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_b2g4n"]
+
+[resource]
+script = ExtResource("2_b2g4n")
+display_name = "Mocha Coffee"
+icon = ExtResource("1_klit4")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

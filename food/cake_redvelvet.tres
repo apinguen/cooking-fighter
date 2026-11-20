@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://d14ixt6ftuc6v"]
+
+[ext_resource type="Texture2D" uid="uid://cwwytsim02jnd" path="res://assets/Food/cake_redvelvet.png" id="1_km4bv"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_xhho2"]
+
+[resource]
+script = ExtResource("2_xhho2")
+display_name = "Red Velvet Cake"
+icon = ExtResource("1_km4bv")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"

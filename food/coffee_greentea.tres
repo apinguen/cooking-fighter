@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dobwfthmt1bdp"]
+
+[ext_resource type="Texture2D" uid="uid://5k6vv4rsp1tm" path="res://assets/Food/coffee_greentea.png" id="1_3i1ea"]
+[ext_resource type="Script" uid="uid://dxis0xckbqysd" path="res://food_data.gd" id="2_vdwmm"]
+
+[resource]
+script = ExtResource("2_vdwmm")
+display_name = "Green Tea"
+icon = ExtResource("1_3i1ea")
+metadata/_custom_type_script = "uid://dxis0xckbqysd"
